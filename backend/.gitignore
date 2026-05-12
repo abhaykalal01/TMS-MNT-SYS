@@ -1,0 +1,13 @@
+
+dist/   
+.env
+logs/
+*.log
+coverage/
+*.tsbuildinfo
+# Ignore IDE specific files
+.vscode/
+.idea/
+*.suo
+.package-lock.json
+node_modules/
