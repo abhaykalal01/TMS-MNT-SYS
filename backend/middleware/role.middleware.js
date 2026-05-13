@@ -1,4 +1,4 @@
-const allowRoles = (...allowedRoles) => {
+export const allowRoles = (...allowedRoles) => {
   return (req, res, next) => {
     const user = req.user;
 
@@ -14,9 +14,4 @@ const allowRoles = (...allowedRoles) => {
   };
 };
 
-const managerOnly = allowRoles('manager');
-
-module.exports = {
-  managerOnly,
-  allowRoles,
-};
+export const managerOnly = allowRoles('manager');
