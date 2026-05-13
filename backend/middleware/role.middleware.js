@@ -1,14 +1,22 @@
-const authorizeRoles = (...roles) => {
-    return (req, res, next) => {
-        if (!roles.includes(req.user.role)) {
-            return res.status(403).json({
-                success: false,
-                message: "Access denied"
-            });
-        }
+const allowRoles = (...allowedRoles) => {
+  return (req, res, next) => {
+    const user = req.user;
 
-        next();
-    };
+    if (!user) {
+      return res.status(401).json({ message: 'Authentication required' });
+    }
+
+    if (!allowedRoles.includes(user.role)) {
+      return res.status(403).json({ message: `Access denied: ${allowedRoles.join(' or ')} only` });
+    }
+
+    next();
+  };
 };
 
-export default authorizeRoles;
+const managerOnly = allowRoles('manager');
+
+module.exports = {
+  managerOnly,
+  allowRoles,
+};
