@@ -3,6 +3,7 @@ import cors from "cors";
 import cookieParser from "cookie-parser";
 
 import authRoutes from "./routes/auth.routes.js";
+import taskRoutes from "./routes/task.routes.js";
 import userRoutes from "./routes/user.routes.js";
 
 import errorMiddleware from "./middleware/error.middleware.js";
